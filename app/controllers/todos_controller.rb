@@ -1,8 +1,9 @@
 class TodosController < ApplicationController
 	before_action :authenticate
+	before_action :set_user
 
 	def index
-		@todos = Todo.all
+		@todos = Todo.where(email: @email)
 	end
 
 	def new
@@ -11,6 +12,7 @@ class TodosController < ApplicationController
 
 	def create
 		@todo = Todo.new(todo_params)
+		@todo.email = @email
 		@todo.save
 		redirect_to root_path
 	end
@@ -18,6 +20,11 @@ class TodosController < ApplicationController
 	private
 
 	def todo_params
-	  params.require(:todo).permit(:title)
+	  params.require(:todo).permit(:title, :email)
 	end
+
+	def set_user
+		@email = session[:current_email]
+	end
+
 end
