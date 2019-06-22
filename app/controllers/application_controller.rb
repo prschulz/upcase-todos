@@ -7,8 +7,16 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def sign_in_as(email)
+  	session[:current_email] = email
+  end
+
   def signed_in?
-  	session[:current_email].present?
+  	current_user.signed_in?
+  end
+
+  def current_user
+  	User.new(session[:current_email])
   end
 
 end
