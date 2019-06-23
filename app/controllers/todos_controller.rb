@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-	before_action :authenticate
+	before_action :require_login
 
 	def index
 		@todos = current_user.todos
@@ -17,8 +17,7 @@ class TodosController < ApplicationController
 	private
 
 	def todo_params
-	  params.require(:todo).permit(:title, :email)
+	  params.require(:todo).permit(:title, :user_id)
 	end
 
 end
-
