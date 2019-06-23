@@ -33,6 +33,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use clearance for auth, defaulting to 1.16.1 because
+# signed_in_with_remember_token? method in lib/clearance/session.rb
+# throws a syntax error unexpected '.' (???)
+gem 'clearance', '1.16.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -43,6 +48,8 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
