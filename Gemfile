@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # Use clearance for auth, defaulting to 1.16.1 because
 # signed_in_with_remember_token? method in lib/clearance/session.rb
 # throws a syntax error unexpected '.' (???)
-gem 'clearance', '1.16.1'
+gem 'clearance', '2.5.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
